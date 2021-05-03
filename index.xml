@@ -1,1 +1,203 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xiao's Blog</title><link>https://xiaoxia42.github.io/</link><description>Recent content on Xiao's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://xiaoxia42.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>https://xiaoxia42.github.io/about-me/</link><pubDate>Sun, 02 May 2021 01:02:45 +0800</pubDate><guid>https://xiaoxia42.github.io/about-me/</guid><description>&lt;p>&lt;strong>Welcome to my website 👋&lt;/strong>&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xiao's Blog</title><link>https://xiaoxia42.github.io/</link><description>Recent content on Xiao's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 02 May 2021 15:36:59 +0800</lastBuildDate><atom:link href="https://xiaoxia42.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>https://xiaoxia42.github.io/about-me/</link><pubDate>Sun, 02 May 2021 01:02:45 +0800</pubDate><guid>https://xiaoxia42.github.io/about-me/</guid><description>&lt;p>&lt;strong>Welcome to my website 👋&lt;/strong>&lt;/p></description></item><item><title>Create a Personal Website With Hugo on MacOS</title><link>https://xiaoxia42.github.io/post/create-website-with-hugo/</link><pubDate>Sun, 02 May 2021 15:36:59 +0800</pubDate><guid>https://xiaoxia42.github.io/post/create-website-with-hugo/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>This article shows how to build up a personal website using hugo and deploy it to Github Page on MacOS.&lt;/p>
+&lt;h2 id="what-hugo-is">What Hugo is&lt;/h2>
+&lt;p>Hugo is one of the most popular open-source static site generators.&lt;/p>
+&lt;p>Hugo can generate beautiful websites using all kinds of Hugo themes easily. Therefore, the author can focus on content creation without caring too much about the website build and maintenance.&lt;/p>
+&lt;h2 id="create-website-locally">Create Website locally&lt;/h2>
+&lt;h3 id="install-hugo">Install Hugo&lt;/h3>
+&lt;p>On MacOS we can install Hugo using &lt;code>Homebrew&lt;/code> or &lt;code>MacPorts&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">brew install hugo
+&lt;span class="c1"># or&lt;/span>
+port install hugo
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You can verify your installation by checking the version of Hugo.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo version
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-a-new-site-locally">Create a New Site Locally&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo new site &amp;lt;your_site_name&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After running this command, Hugo will create a new folder named &amp;lt;your_site_name&amp;gt; under your work directory.&lt;/p>
+&lt;h3 id="add-a-theme-to-site">Add a Theme to Site&lt;/h3>
+&lt;p>You can choose your own theme in &lt;a href="https://themes.gohugo.io/">Hugo Themes&lt;/a>.
+After you chosen your theme, you can add it to your site in both ways.&lt;/p>
+&lt;ul>
+&lt;li>Download the theme and unzip it into the themes directory.&lt;/li>
+&lt;li>Install with &lt;code>git submodule&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">git init
+git submodule add &amp;lt;theme_url&amp;gt; themes/&amp;lt;theme_name&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After installed the theme into your site, write &lt;code>theme = &amp;quot;&amp;lt;theme_name&amp;gt;&amp;quot;&lt;/code> into the &lt;code>config.toml&lt;/code> file to implement this theme to your site.&lt;/p>
+&lt;p>You can now add a new post into your site with command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo new posts/example.md
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After save your changes, you can view this site locally by running:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo server -D
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This command will builds and serves your site. And it will avoid writing the rendered and served content to disk, preferring store it in memory. The &lt;code>-D&lt;/code> flag means include content marked as draft.&lt;/p>
+&lt;p>Now open http://localhost:1313/ in your browser, you should see your site with hugo theme implemented.&lt;/p>
+&lt;h2 id="create-remote-repo">Create Remote Repo&lt;/h2>
+&lt;p>You have to create a public github repo to store those static file generated by Hugo if you want to use the github page to deploy your personal website.&lt;/p>
+&lt;p>&lt;strong>This new created repo must named &lt;code>&amp;lt;username&amp;gt;.github.io&lt;/code>, where &lt;code>&amp;lt;username&amp;gt;&lt;/code> is your username of Github.&lt;/strong> Otherwise, github won&amp;rsquo;t recognize it as a github page to be deployed. &lt;em>Here because I have created a repo to store my site, a duplicate name error occurs.&lt;/em>
+&lt;img src="https://xiaoxia42.github.io/post/create-website-with-hugo/create-repo.png" alt="create-repo">&lt;/p>
+&lt;p>Here I created another repo to store all the source code of my site. The source code repo, you can name it whatever you like (mine is &lt;code>xiao_web&lt;/code>). And the source code repo can be either public repo or private repo.&lt;/p>
+&lt;h2 id="deploy-site">Deploy Site&lt;/h2>
+&lt;p>There are two ways to deploy your site to github pages.&lt;/p>
+&lt;h3 id="build-locally-and-deploy">Build Locally and Deploy&lt;/h3>
+&lt;p>Add the public folder (place to put static pages generated by Hugo) as a submodule of your source code folder.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">git submodule add -b main https://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>And change the &lt;code>baseURL&lt;/code> in &lt;code>config.toml&lt;/code> into &lt;code>https://&amp;lt;username&amp;gt;.github.io/&lt;/code>.&lt;/p>
+&lt;p>Then build the Hugo pages with command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Change your directory into ./public you will find those files generated by Hugo. Commit them and push the changes into the &lt;code>&amp;lt;username&amp;gt;.github.io&lt;/code> repo.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="nb">cd&lt;/span> public
+git add -A
+git commit -m &lt;span class="s2">&amp;#34;commit msg&amp;#34;&lt;/span>
+git push -u origin main
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="deploy-with-github-actions">Deploy with Github Actions&lt;/h3>
+&lt;p>As mentioned above, we created a repo to store the source code of website. Thus, we can implement auto deployment using the github workflow.&lt;/p>
+&lt;p>we can create a workflow in our source code repo by adding a &lt;code>.github/workflows/gh-pages.yml&lt;/code> file to it. The content of this file refer to &lt;a href="https://github.com/marketplace/actions/hugo-setup">Hugo Setup&lt;/a> is:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-yml" data-lang="yml">&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">github pages&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="nt">on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">push&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">branches&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="l">main &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Set a branch to deploy&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="nt">jobs&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">deploy&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">runs-on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ubuntu-18.04&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">steps&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">actions/checkout@v2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">submodules&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Fetch Hugo themes (true OR recursive)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">fetch-depth&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Fetch all history for .GitInfo and .Lastmod&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Setup Hugo&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-hugo@v2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">hugo-version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;0.81.0&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># extended: true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Build&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">hugo --minify&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Deploy&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-gh-pages@v3&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">external_repository&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io # which repo to be deploy to&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">personal_token&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">${{ secrets.ACTION_ACCESS_TOKEN }} # personal_access_token is needed if you want to publish content to other repo&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">publish_dir&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">./public # which folder of the source code repo to be deployed. Because hugo generate its static pages into public folder, publish_dir is ./public&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">publish_branch&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">main # which branch of target repo to publish to&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You can generate ACTION_ACCESS_TOKEN by clicking your avatar right-upper side. And in &lt;code>Settings-&amp;gt;Developer settings-&amp;gt;Personal access token&lt;/code> you can generate a new token.&lt;/p>
+&lt;p>Generate a token with &lt;code>repo&lt;/code>, &lt;code>workflow&lt;/code> and &lt;code>admin:repo_hook&lt;/code> selected, and save the token for next step.
+&lt;img src="https://xiaoxia42.github.io/post/create-website-with-hugo/gen-access-token.png" alt="gen-access-token">
+Now that you&amp;rsquo;ve got the access token, go to the source code repo to set up the &lt;code>secrets.ACTION_ACCESS_TOKEN&lt;/code>.&lt;/p>
+&lt;p>Create a new &lt;code>repository secret&lt;/code> inside the &lt;code>Settings-&amp;gt;Secrets&lt;/code> of your source code repo. Name it as &lt;code>ACTION_ACCESS_TOKEN&lt;/code> and paste the token we get above here.&lt;/p>
+&lt;p>Now the github workflow will do the auto deployment for you once you push new commits to the source code repo.&lt;/p>
+&lt;p>&lt;strong>Congratulate! You can see your website if you type &lt;code>&amp;lt;username&amp;gt;.github.io&lt;/code> in your browser now 👏&lt;/strong>&lt;/p>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;p>&lt;a href="https://gohugo.io/commands/hugo/">Hugo&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://pages.github.com/">Github Pages&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/marketplace/actions/hugo-setup">Hugo Setup&lt;/a>&lt;/p></description></item></channel></rss>
